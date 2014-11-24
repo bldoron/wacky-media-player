@@ -1,0 +1,33 @@
+html, body {
+    margin: 20px;
+}
+
+.ember-application {
+    margin: 20px;
+}
+
+.video-list-item {
+    margin-bottom: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+ul {
+    list-style: none;
+}
+
+.title {
+    font-weight: bold;
+    line-height: 1.2;
+    max-height: 2.4em;
+}
+
+.owner {
+    line-height: 1.2;
+    max-height: 2.4em;
+}
+
+.details-info-container, .thumb {
+    float: left;
+}

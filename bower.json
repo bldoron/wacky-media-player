@@ -1,0 +1,21 @@
+{
+  "name": "Wacky Media Player",
+  "version": "0.0.1",
+  "description": "YouTube iFrame Media Player",
+  "main": "index.html",
+  "authors": [
+    "bldoron"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ember-data": "~0.0.14",
+    "ember": "~1.8.1"
+  }
+}

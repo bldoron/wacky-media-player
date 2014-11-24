@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Wacky Media Player</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+</head>
+<body>
+  <script type="text/x-handlebars">
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+           {{#link-to 'index' class='navbar-brand'}}Wacky Media Player{{/link-to}}
+        </div>
+      </div>
+    </nav>
+   {{outlet}}
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="videos">
+    <div class="my-container">
+        <div class="row">
+            <div class="col-sm-4">
+                <nav id="sidebar">
+                    <div class="search-bar">
+                        <label for='yt-search'>
+                        {{input valueBinding='q' name="yt-search" placeholder="Search in YouTube"}}
+                        <button id="search" class="search" {{action 'search' q}}>Search</button>
+                        <div class="button-container">
+                        {{#if isPrev}}
+                            <button id="prev-button" class="paging-button" {{action 'prev'}}>Previous Page</button>
+                        {{/if}}
+                        {{#if isNext}}
+                            <button id="next-button" class="paging-button" {{action 'next'}}>Next Page</button>
+                        {{/if}}
+                        </div>
+                    </div>
+
+                    <section id=result-grid>
+                        <ul>
+                        {{#each video in videos}}
+                          <li class="video-list-item">
+                            {{#link-to 'video' video.id}}
+                            <div class="details-container">
+                                <div class="thumb col-sm-3">
+                                    <img {{bind-attr src=video.thumbnail}} width="120" height="90"></img>
+                                </div>
+                                <div class="details-info-container col-sm-6">
+                                    <div class="title">
+                                        {{video.title}}
+                                    </div>
+                                    <div class="owner">
+                                        By: {{video.channelTitle}}
+                                    </div>
+                                </div>
+                            </div>
+                            {{/link-to}}
+                          </li>
+                        {{/each}}
+                         </ul>
+                    </section>
+                </nav>
+            </div>
+            <div class="col-sm-6">
+                {{outlet}}
+            </div>
+        </div>
+    </div>
+  </script>
+
+  <script type="text/x-handlebars" id="video">
+    <h3>{{title}}</h3>
+    <h6>{{description}}</h6>
+    <iframe {{bind-attr src=videoUrl}} width="800" height="400">&nbsp;</iframe>
+  </script>
+
+  <script src="js/libs/jquery-1.10.2.js"></script>
+  <script src="js/libs/handlebars-v1.3.0.js"></script>
+  <script src="js/libs/ember-1.8.1.js"></script>
+  <script src="js/libs/ember-data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/models/video.js"></script>
+  <script src="js/models/search.js"></script>
+  <script src="js/router.js"></script>
+</body>
+</html>
